@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Fashion Rating</title>
+</head>
+<body>
+    <h1>Prediction Fashion Rating</h1>
+    <form action="/predict" method="post">
+        <label for="Цена">Цена:</label>
+        <input type="number" name="Цена" id="Цена" required>
+        <br><br>
+        <label for="Средний_возраст_клиентов">Средний_возраст_клиентов:</label>
+        <input type="number" name="Средний_возраст_клиентов" id="Средний_возраст_клиентов" required>
+        <br><br>
+        <label for="Отзывы_клиентов">Отзывы_клиентов:</label>
+        <input type="number" name="Отзывы_клиентов" id="Отзывы_клиентов" required>
+        <br><br>
+        <label for="Комментарии_в_социальных_сетях">Комментарии_в_социальных_сетях:</label>
+        <input type="number" name="Комментарии_в_социальных_сетях" id="Комментарии_в_социальных_сетях" required>
+        <br><br>
+        <label for="Бренд">Бренд:</label>
+        <select name="Бренд" id="Бренд" required>
+            {% for Бренд in data['Бренд'].unique() %}
+                <option value="{{ Бренд }}">{{ Бренд }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="Категория">Категория:</label>
+        <select name="Категория" id="Категория" required>
+            {% for Категория in data['Категория'].unique() %}
+                <option value="{{ Категория }}">{{ Категория }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="Описание">Описание:</label>
+        <select name="Описание" id="Описание" required>
+            {% for Описание in data['Описание'].unique() %}
+                <option value="{{ Описание }}">{{ Описание }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="Атрибуты_стиля">Атрибуты_стиля:</label>
+        <select name="Атрибуты_стиля" id="Атрибуты_стиля" required>
+            {% for Атрибуты_стиля in data["Атрибуты_стиля"].unique() %}
+                <option value="{{ Атрибуты_стиля }}">{{ Атрибуты_стиля }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="Размер">Размер:</label>
+        <select name="Размер" id="Размер" required>
+            {% for Размер in data['Размер'].unique() %}
+                <option value="{{ Размер }}">{{ Размер }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="Цвет">Цвет:</label>
+        <select name="Цвет" id="Цвет" required>
+            {% for Цвет in data['Цвет'].unique() %}
+                <option value="{{ Цвет }}">{{ Цвет }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="История_покупок">История_покупок:</label>
+        <select name="История_покупок" id="История_покупок" required>
+            {% for История_покупок in data['История_покупок'].unique() %}
+                <option value="{{ История_покупок }}">{{ История_покупок }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="Модные_журналы">Модные_журналы:</label>
+        <select name="Модные_журналы" id="Модные_журналы" required>
+            {% for Модные_журналы in data['Модные_журналы'].unique() %}
+                <option value="{{ Модные_журналы }}">{{ Модные_журналы }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="Модные_инфлюенсеры">Модные_инфлюенсеры:</label>
+        <select name="Модные_инфлюенсеры" id="Модные_инфлюенсеры" required>
+            {% for Модные_инфлюенсеры in data['Модные_инфлюенсеры'].unique() %}
+                <option value="{{ Модные_инфлюенсеры }}">{{ Модные_инфлюенсеры }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="Сезон">Сезон:</label>
+        <select name="Сезон" id="Сезон" required>
+            {% for Сезон in data['Сезон'].unique() %}
+                <option value="{{ Сезон }}">{{ Сезон }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="Период_наибольшего_количества_покупок">Период_наибольшего_количества_покупок:</label>
+        <select name="Период_наибольшего_количества_покупок" id="Период_наибольшего_количества_покупок" required>
+            {% for Период_наибольшего_количества_покупок in data['Период_наибольшего_количества_покупок'].unique() %}
+                <option value="{{ Период_наибольшего_количества_покупок }}">{{ Период_наибольшего_количества_покупок }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="Обратная_связь">Обратная_связь:</label>
+        <select name="Обратная_связь" id="Обратная_связь" required>
+            {% for Обратная_связь in data['Обратная_связь'].unique() %}
+                <option value="{{ Обратная_связь }}">{{ Обратная_связь }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+    {% if prediction %}
+        <h2>Prediction:</h2>
+        <p>{{ prediction }}</p>
+    {% endif %}
+</body>
+</html>
